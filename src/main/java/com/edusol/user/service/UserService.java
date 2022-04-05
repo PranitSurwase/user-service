@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.edusol.user.exception.UserNotFoundException;
 import com.edusol.user.model.User;
 import com.edusol.user.repository.UserRepository;
 
@@ -49,8 +50,8 @@ public class UserService {
 		}catch (Exception e) {
 			logger.error("not found");
 			logger.error(message);
-			return new ResponseEntity<String> (message,HttpStatus.NOT_FOUND);
-			
+			//return new ResponseEntity<String> (message,HttpStatus.NOT_FOUND);
+			throw new UserNotFoundException();
 		}
 	
 	}
